@@ -26,6 +26,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', :require => 'bcrypt'
 
+# bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+# paperclip image upload
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,21 +1,15 @@
-<h1>Зарегистрироваться</h1>
-
+<div class="container">
 <%= form_for(@user) do |f| %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p class="button"><%= f.submit %></p>
+<form class="form-signin">
+<h2 class="form-signin-heading">Зарегистрироваться</h2>
+    <%= f.label :name, :class => "sr-only" %><br />
+    <%= f.text_field :name, :class => "form-control", :placeholder => "Name"  %>
+    <%= f.label :email, :class => "sr-only" %>
+    <%= f.text_field :email, :id => "inputEmail", :class => "form-control", :placeholder => "Email address"  %>
+    <%= f.label :password, :class => "sr-only" %>
+    <%= f.password_field :password, :id => "inputPassword", :class => "form-control", :placeholder => "Password" %>
+    <%= f.label :password_confirmation, :class => "sr-only" %>
+    <%= f.password_field :password_confirmation, :id => "inputPassword", :class => "form-control", :placeholder => "Password confirmation" %><br>
+  <%= f.submit 'Отправить',  :class => "btn btn-lg btn-primary btn-block" %>
 <% end %>
+</div>

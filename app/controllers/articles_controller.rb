@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :get_article, only: [:show, :edit, :update, :destroy]
-  before_action :check_auth, only: [:new, :create, :edit, :update, :destroy]
+  before_action :user_signed_in?, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @article = Article.new
@@ -45,11 +45,6 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:name, :description, :image)
-  end
-  def check_auth
-    if !current_user || current_user.id != @article.user_id
-      redirect_to root_path
-    end
   end
   def get_article
     @article = Article.find(params[:id])

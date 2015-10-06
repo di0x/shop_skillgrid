@@ -12,7 +12,11 @@
 
     <%= f.label :password_confirmation , :class => 'sr-only' %>
     <%= f.password_field :password_confirmation, autocomplete: "off", :id => "inputPassword", :class => "form-control", :placeholder => "Password confirmation" %>
-
+    <%= f.label :shop_name , :class => 'sr-only' %>
+    <%= f.text_field :shop_name, :class => "form-control", :placeholder => "Shop name" %>
+    <%= f.label :avatar , :class => 'sr-only' %>
+    <%= f.file_field :avatar %>
+    <%= resource_name %>
   <div class="actions">
    <%= f.submit 'Sign up',  :class => "btn btn-lg btn-primary btn-block" %>
   </div>

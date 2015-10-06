@@ -4,7 +4,7 @@
 <%= f.text_field :name, :class => "form-control", :placeholder => "Название" %><br>
 <%= f.label :description, :class => "sr-only" %>
 <%= f.text_area :description, :class => "form-control", :placeholder => "Описание", :rows => "5" %><br>
-  <%= f.file_field :image %>
+<%= f.file_field :image %>
 <%= f.submit "Отправить", :class => "btn btn-default" %>
 <% end %>
 </div>

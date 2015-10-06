@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_for :admins
+  devise_for :sellers
   root :to => "articles#index"
   get "articles/new" => "articles#new", :as => "new_article"
   resources :articles

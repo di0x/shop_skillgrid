@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
     protected
 
         def configure_permitted_parameters
-            devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password) }
+            if resource_name == :user
+            	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
+           	elsif resource_name == :seller
+            	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :shop_name, :avatar) }
+            elsif resource_name == :admin
+            	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :avatar, :name, :last_name, :passport_image, :dob) }
+           	end 
         end
 end

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :get_article, only: [:show, :edit, :update, :destroy]
-  before_action :user_signed_in?, only: [:new, :create, :edit, :update, :destroy]
+  authorize_resource
 
   def new
     @article = Article.new

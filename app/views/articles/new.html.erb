@@ -1,5 +1,9 @@
 <div class="container">
 <%= form_for(@article) do |f| %>
+<% if current_user.role == "admin" %>
+	<%= f.label :pro %>
+	<%= f.check_box :pro %>
+<% end %>
 <%= f.label :name, :class => "sr-only" %>
 <%= f.text_field :name, :class => "form-control", :placeholder => "Название" %><br>
 <%= f.label :description, :class => "sr-only" %>

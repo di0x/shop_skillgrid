@@ -1,8 +1,9 @@
 <div class="container">
-<h2><%= @article.name %></h2>
+<h2><%= @article.name %><% if @article.pro && (can? :see_pro, @article) %> PRO<% end %></h2>
+Shop: <%= @article.shop_name%>
   <p><%= @article.description %></p>
   <% if @article.image.exists? %><%= image_tag @article.image.url %><% end %>
-  <% if current_user.role == "admin" || current_user.id == @article.user_id && (can? :update, @article) %>
+  <% if current_user.has_role?("admin") || current_user.id == @article.user_id && (can? :update, @article) %>
   <%= button_to "Изменить", edit_article_path,  method: :get %>
   <%= button_to "Удалить", @article, method: :delete %>
   <% end %>

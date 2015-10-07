@@ -8,6 +8,9 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
+    @article.pro ||= false
+    @article.shop_name = current_user.shop_name
     if @article.save
       redirect_to articles_path, :notice => "Пост создан!"
     else
@@ -44,7 +47,11 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:name, :description, :image)
+    if current_user.has_role?("admin")
+      params.require(:article).permit(:name, :description, :image, :pro) 
+    else
+      params.require(:article).permit(:name, :description, :image) 
+    end
   end
   def get_article
     @article = Article.find(params[:id])

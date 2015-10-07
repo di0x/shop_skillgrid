@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, password_length: 6..128
   has_many :articles
   before_create :set_role
+
+  def has_role?(role)
+    self.role == role
+  end
   private
 	def set_role 
 		self.role = "user"
